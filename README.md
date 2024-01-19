@@ -1,4 +1,4 @@
-# RssTransform
+# rss-transform
 
 ## Summary
 
