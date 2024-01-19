@@ -1,8 +1,8 @@
 version: '3.8'
 services:
-  app-builder:
+  app-build:
+    image: rss-transform-build:latest
     build:
       context: .
       dockerfile: Dockerfile
-      target: builder
-    image: rss-transform-builder:latest
+      target: build
