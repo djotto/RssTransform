@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  app-runner:
+    image: rss-transform-runner:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    ports:
+      - "8080:8080"
