@@ -9,9 +9,14 @@ import (
 
 func main() {
 	if err := config.Init(); err != nil {
-		_, _ = fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+		_, _ = fmt.Fprintf(os.Stderr, "main::main(): %v\n", err)
 		os.Exit(1)
 	}
 
 	fmt.Printf("%s: %+v\n", config.Dir, config.AppConfig)
+
+	for _, pipelineConfig := range config.PipelineConfigs {
+		fmt.Printf("%+v\n", pipelineConfig)
+	}
+
 }
