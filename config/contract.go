@@ -8,7 +8,6 @@ package config
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 var (
@@ -17,6 +16,8 @@ var (
 	Dir string
 	// AppConfig loaded from {Dir}/config.yml
 	AppConfig AppConfigStruct
+	// PipelineConfigs loaded from {Dir}/*.yml
+	PipelineConfigs []PipelineConfigStruct
 )
 
 // Init uses Cobra to get command-line arguments.
@@ -42,23 +43,19 @@ func Init() error {
 	}
 
 	// Get Dir/config.yaml and process it.
-	loadAppConfig()
+	appConfigPtr, err := loadAppConfig(Dir)
+	if err != nil {
+		return fmt.Errorf("config::Init(): %w", err)
+	}
+	appConfig := *appConfigPtr
 
-	return nil
-}
-
-// InitConfig checks the availability of the configuration directory.
-func InitConfig() error {
-	// Check if the config directory is set and exists
-	if Dir == "" {
-		Dir = "/etc/rss-transform" // Set the default
+	pipelineConfigs, err := loadPipelineConfigs(Dir)
+	if err != nil {
+		return fmt.Errorf("config::Init(): %w", err)
 	}
 
-	if _, err := os.Stat(Dir); os.IsNotExist(err) {
-		// Handle the case where the directory does not exist
-		_, _ = fmt.Fprintf(os.Stderr, "Config directory '%s' does not exist\n", Dir)
-		os.Exit(1)
-	}
-
+	// Assign to package-level variables
+	AppConfig = appConfig
+	PipelineConfigs = pipelineConfigs
 	return nil
 }
