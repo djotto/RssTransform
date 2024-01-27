@@ -35,8 +35,13 @@ func newRssPipeline(cfg config.PipelineConfigStruct) (*rssPipeline, error) {
 // start runs the rssPipeline's main logic in a goroutine.
 func (rp *rssPipeline) start(ctx context.Context, wg *sync.WaitGroup) {
 	fmt.Println("Starting goroutine", rp.id)
+
+	duration := time.Duration(rp.config.SleepDuration) * time.Second
+	timer := time.NewTimer(duration)
+
 	go func() {
 		defer wg.Done()
+		defer timer.Stop()
 		for {
 			// Implement the main logic of the pipeline here.
 			select {
@@ -44,9 +49,9 @@ func (rp *rssPipeline) start(ctx context.Context, wg *sync.WaitGroup) {
 				// Perform cleanup and exit goroutine
 				rp.shutdown()
 				return
-			default:
-				time.Sleep(time.Second)
-				fmt.Println("In goroutine", rp.id)
+			case <-timer.C:
+				fmt.Println(rp.config.SleepDuration, "second timer has fired in goroutine", rp.id)
+				timer.Reset(duration)
 			}
 		}
 	}()
