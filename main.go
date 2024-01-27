@@ -3,20 +3,30 @@ package main
 import (
 	"fmt"
 	"github.com/djotto/rss-transform/config"
+	"github.com/djotto/rss-transform/pipeline"
 	_ "net/http/pprof" //nolint:gosec
 	"os"
+	"sync"
+	"time"
 )
 
 func main() {
+	// Load all the config files
 	if err := config.Init(); err != nil {
 		_, _ = fmt.Fprintf(os.Stderr, "main::main(): %v\n", err)
 		os.Exit(1)
 	}
 
-	fmt.Printf("%s: %+v\n", config.Dir, config.AppConfig)
-
-	for _, pipelineConfig := range config.PipelineConfigs {
-		fmt.Printf("%+v\n", pipelineConfig)
+	// Initialize pipelines
+	var wg sync.WaitGroup
+	cancel, err := pipeline.Init(config.PipelineConfigs, &wg)
+	if err != nil {
+		_, _ = fmt.Fprintf(os.Stderr, "main::main(): Failed to initialize pipelines: %v\n", err)
+		os.Exit(1)
 	}
 
+	time.Sleep(10 * time.Second)
+
+	cancel()
+	wg.Wait()
 }
