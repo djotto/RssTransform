@@ -17,12 +17,6 @@ type AppConfigStruct struct {
 	Param3 string `yaml:"param3"`
 }
 
-type PipelineConfigStruct struct {
-	Param1 string `yaml:"param1"`
-	Param2 string `yaml:"param2"`
-	Param3 string `yaml:"param3"`
-}
-
 // loadAppConfig loads config.yml into AppConfig and returns nil, else returns an error.
 func loadAppConfig(dir string) (*AppConfigStruct, error) {
 	configFilePath := filepath.Join(Dir, "config.yml")
