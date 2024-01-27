@@ -10,6 +10,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// PipelineConfigStruct contains the configuration of a single pipeline.
+type PipelineConfigStruct struct {
+	Param1 string `yaml:"param1"`
+	Param2 string `yaml:"param2"`
+	Param3 string `yaml:"param3"`
+}
+
 var (
 	// Dir holds the path to the configuration directory.
 	// This variable can be set via command line flag "-config".
