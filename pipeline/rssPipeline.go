@@ -50,7 +50,8 @@ func (rp *rssPipeline) start(ctx context.Context, wg *sync.WaitGroup) {
 				rp.shutdown()
 				return
 			case <-timer.C:
-				fmt.Println(rp.config.SleepDuration, "second timer has fired in goroutine", rp.id)
+				fmt.Printf("Config: %+v\n", rp.config)
+				fmt.Println("Firing timer in goroutine", rp.id)
 				timer.Reset(duration)
 			}
 		}
