@@ -12,10 +12,8 @@ import (
 
 // PipelineConfigStruct contains the configuration of a single pipeline.
 type PipelineConfigStruct struct {
-	SleepDuration int    `yaml:"SleepDuration"`
-	Param1        string `yaml:"param1"`
-	Param2        string `yaml:"param2"`
-	Param3        string `yaml:"param3"`
+	SleepDuration int                    `yaml:"SleepDuration"`
+	Pipeline      map[string]interface{} `yaml:"Pipeline"`
 }
 
 var (
