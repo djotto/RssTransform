@@ -10,10 +10,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// AppConfigStruct config.yml is read into one of these on startup.
+type AppConfigStruct struct {
+	MaxItemAge int `yaml:"max_item_age"`
+	MaxItems   int `yaml:"max_items"`
+}
+
 // PipelineConfigStruct contains the configuration of a single pipeline.
 type PipelineConfigStruct struct {
-	SleepDuration int                    `yaml:"SleepDuration"`
-	Pipeline      map[string]interface{} `yaml:"Pipeline"`
+	Name          string                 `yaml:"name"`
+	Description   string                 `yaml:"description"`
+	SleepDuration int                    `yaml:"sleep_duration"`
+	Pipeline      map[string]interface{} `yaml:"pipeline"`
 }
 
 var (
