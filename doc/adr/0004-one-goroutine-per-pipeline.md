@@ -21,10 +21,6 @@ own timer.
 Alternatives considered: An off-the-shelf threadpool implementation with a
 single goroutine managing all the timers.
 
-The *Recovery* and *Resource utilization* risks, below, are strong enough
-arguments that I might revisit this decision in a future version, but for now
-development speed tips the balance against premature optimization.
-
 ## Consequences
 
 Advantages:
@@ -45,3 +41,7 @@ Risks:
    resources. This solution is likely to have higher resource utilization when
    dealing with large numbers of pipelines simultaneously. In a threadpool
    implementation, the maximum number of threads can be limited.
+
+The *Recovery* and *Resource utilization* risks are strong enough
+arguments that I might revisit this decision in a future version, but for now
+development speed tips the balance against premature optimization.
