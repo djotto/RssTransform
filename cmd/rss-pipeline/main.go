@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/djotto/rss-transform/config"
-	"github.com/djotto/rss-transform/pipeline"
+	"github.com/djotto/rss-transform/pkg/config"
+	"github.com/djotto/rss-transform/pkg/pipeline"
 	_ "net/http/pprof" //nolint:gosec
 	"os"
 	"sync"

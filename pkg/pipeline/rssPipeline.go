@@ -3,7 +3,7 @@ package pipeline
 import (
 	"context"
 	"fmt"
-	"github.com/djotto/rss-transform/config"
+	"github.com/djotto/rss-transform/pkg/config"
 	"sync"
 	"time"
 )
