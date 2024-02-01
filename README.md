@@ -128,10 +128,28 @@ The important bit's the `pipeline` key. This is what's going on under the hood:
      {
        "data": [
          {
-           "@todo": "@todo"
+           "title": "@todo",
+           "link": "@todo",
+           "description": "@todo",
+           "author": "@todo",
+           "category": "@todo",
+           "comments": "@todo",
+           "enclosure": "@todo",
+           "guid": "@todo",
+           "pubDate": "@todo",
+           "source": "@todo"
          },
          {
-           "@todo": "@todo"
+           "title": "@todo",
+           "link": "@todo",
+           "description": "@todo",
+           "author": "@todo",
+           "category": "@todo",
+           "comments": "@todo",
+           "enclosure": "@todo",
+           "guid": "@todo",
+           "pubDate": "@todo",
+           "source": "@todo"
          }
        ]
      }
@@ -154,10 +172,28 @@ The important bit's the `pipeline` key. This is what's going on under the hood:
      {
        "data": [
          {
-           "@todo": "@todo"
+           "title": "@todo",
+           "link": "@todo",
+           "description": "@todo",
+           "author": "@todo",
+           "category": "@todo",
+           "comments": "@todo",
+           "enclosure": "@todo",
+           "guid": "@todo",
+           "pubDate": "@todo",
+           "source": "@todo"
          },
          {
-           "@todo": "@todo"
+           "title": "@todo",
+           "link": "@todo",
+           "description": "@todo",
+           "author": "@todo",
+           "category": "@todo",
+           "comments": "@todo",
+           "enclosure": "@todo",
+           "guid": "@todo",
+           "pubDate": "@todo",
+           "source": "@todo"
          }
        ]
      }
